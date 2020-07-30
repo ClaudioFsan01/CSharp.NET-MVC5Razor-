@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Mvc5RazorAutenticacao.Models.Cursos>
+
+@{
+    ViewBag.Title = "Lista Cursos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Lista </h2>
+
+<p>
+    @Html.ActionLink("Inserir novo curso", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.curCodigo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.curDescricao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.curProfessor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.curPreco)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.curCodigo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.curDescricao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.curProfessor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.curPreco)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new {  id=item.curCodigo }) |
+            @Html.ActionLink("Details", "Details", new {  id=item.curCodigo  }) |
+            @Html.ActionLink("Delete", "Delete", new {  id=item.curCodigo  })
+        </td>
+    </tr>
+}
+
+</table>
