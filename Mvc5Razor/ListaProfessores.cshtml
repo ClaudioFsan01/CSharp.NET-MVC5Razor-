@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Mvc5RazorAutenticacao.Models.Professores>
+@*  A interface IList<T> implementa a interface IEnumerable*@
+@{
+    ViewBag.Title = "ListaProfessores";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Lista de Professores</h2>
+
+<table class="table">
+
+
+    <tr>
+
+        <th> @Html.DisplayNameFor(model => model.profCodigo)</th>
+        <th> @Html.DisplayNameFor(model => model.profNome)</th>
+        <th> @Html.DisplayNameFor(model => model.profCurso)</th>
+        <th> @Html.DisplayNameFor(model => model.profPreco)</th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td> @Html.DisplayFor(modelItem => item.profCodigo)</td>
+            <td> @Html.DisplayFor(modelItem => item.profNome)</td>
+            <td> @Html.DisplayFor(modelItem => item.profCurso)</td>
+            <td> @Html.DisplayFor(modelItem => item.profPreco)</td>
+        </tr>
+    }
+
+</table>
+
+
+
