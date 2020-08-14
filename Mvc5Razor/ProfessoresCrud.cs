@@ -40,7 +40,22 @@ namespace Mvc5RazorAutenticacao.Models
 
         public void InserirProfessor(Professores professor)
         {
+           /* Professores ultimoProfessor = professores.OrderBy(prof => prof.profCodigo).Last(); 
+            * Nesse caso ordenaria a lista em ordem crescente e retornaria o ultimo elemento
+            */
+
+            Professores ultimoProfessor  = professores.OrderByDescending(prof => prof.profCodigo).First();
+            professor.profCodigo = ultimoProfessor.profCodigo;
+            professor.profCodigo++;
             professores.Add(professor);
+
+            /*OrderByDescending(prof => prof.profCodigo) classifica os elementos de uma sequencia em ordem decrescente
+             de acordo com uma chave. Nesse caso a chave é o codigo.
+
+            First() retorna o primeiro elemento dessa sequencia que nesse caso será o ultimo elemento da lista
+
+             
+             */
         }
 
 
