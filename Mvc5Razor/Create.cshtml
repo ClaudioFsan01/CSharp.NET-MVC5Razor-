@@ -1,52 +1,45 @@
-﻿@model Mvc5RazorAutenticacao.Models.Professores
-@{
-    ViewBag.Title = "Create";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+﻿@model Mvc5RazorAutenticacao.Models.Cursos
 
-<h2>Cadastrar Professor</h2>
-
-@using (Html.BeginForm())
-{
+@using (Html.BeginForm()) 
+ {
+    @Html.AntiForgeryToken()
+    
     <div class="form-horizontal">
-
+        <h4>Curso</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-           
-            <div>
-         @*@html.displaynamefor(model => model.profcodigo)
-         @html.editorfor(model => model.profcodigo)*@
-          </div>
-       
-
-        </div>
-
-        <div class="form-group">
-
-            <div>
-                @Html.DisplayNameFor(model => model.profNome)
-                @Html.EditorFor(model => model.profNome)
+            @Html.LabelFor(model => model.curDescricao, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.curDescricao, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.curDescricao, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            <div>
-                @Html.DisplayNameFor(model => model.profCurso)
-               @Html.EditorFor(model => model.profCurso)
-           </div>
-        </div>
-
-
-        <div class="form-group">
-            <div>
-                @Html.DisplayNameFor(model => model.profPreco)
-                @Html.EditorFor(model => model.profPreco)
+            @Html.LabelFor(model => model.curProfessor, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.curProfessor, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.curProfessor, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <button type="submit" name="button"> Gravar </button>
+        <div class="form-group">
+            @Html.LabelFor(model => model.curPreco, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.curPreco, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.curPreco, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
     </div>
+ }
 
-
-}
-
+<div>
+    @Html.ActionLink("Voltar para lista", "Index")
+</div>
