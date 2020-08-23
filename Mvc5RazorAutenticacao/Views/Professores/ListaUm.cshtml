@@ -1,0 +1,32 @@
+﻿@model  Mvc5RazorAutenticacao.Models.Professores
+    
+    @*pegando o modelo de apenas um professor*@
+
+@{
+    ViewBag.Title = "ListaUm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Um Professor </h2>
+
+<table class="table">
+
+    <tr>
+        <th> @Html.DisplayNameFor(itemModel => itemModel.profCodigo)</th>
+        <th> @Html.DisplayNameFor(itemModel => itemModel.profNome)</th>
+        <th> @Html.DisplayNameFor(itemModel => itemModel.profCurso)</th>
+        <th> @Html.DisplayNameFor(itemModel => itemModel.profPreco)</th>
+
+    </tr>
+    <tr>
+        <td> @Html.DisplayFor(itemModel => itemModel.profCodigo)</td>
+        <td> @Html.DisplayFor(itemModel => itemModel.profNome)</td>
+        <td> @Html.DisplayFor(itemModel => itemModel.profCurso)</td>
+        <td> @Html.DisplayFor(itemModel => itemModel.profPreco)</td>
+
+    </tr>
+
+</table>
+
+@Html.ActionLink("retornar para lista de professores", "ListaProfessores")
+
