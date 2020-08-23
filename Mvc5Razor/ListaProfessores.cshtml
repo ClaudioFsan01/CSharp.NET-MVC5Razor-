@@ -5,6 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@Html.ActionLink("Inserir novo professor", "Create")
 <h2>Lista de Professores</h2>
 
 <table class="table">
@@ -21,12 +22,18 @@
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td> @Html.DisplayFor(modelItem => item.profCodigo)</td>
-            <td> @Html.DisplayFor(modelItem => item.profNome)</td>
-            <td> @Html.DisplayFor(modelItem => item.profCurso)</td>
-            <td> @Html.DisplayFor(modelItem => item.profPreco)</td>
-        </tr>
+      <tr>
+        <td> @Html.DisplayFor(modelItem => item.profCodigo)</td>
+        <td> @Html.DisplayFor(modelItem => item.profNome)</td>
+        <td> @Html.DisplayFor(modelItem => item.profCurso)</td>
+        <td> @Html.DisplayFor(modelItem => item.profPreco)</td>
+        <td>@Html.ActionLink("Editar", "Edit", new { id = item.profCodigo })</td>
+          <td>@Html.ActionLink("Excluir", "Delete", new { id = item.profCodigo })</td>
+          <
+          @*@Html.ActionLink("")</td>*/*@
+      
+
+      </tr>
     }
 
 </table>

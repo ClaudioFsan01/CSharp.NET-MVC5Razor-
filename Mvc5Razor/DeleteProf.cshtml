@@ -1,0 +1,45 @@
+﻿@model Mvc5RazorAutenticacao.Models.Professores
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+@using (Html.BeginForm())
+ {
+
+  <div class="form-horizontal">
+    <div class="form-group">
+        @Html.HiddenFor(model => model.profCodigo)
+    </div>
+
+    <div class="form-group">
+        <div class="col-lg-10">
+            @Html.LabelFor(model => model.profNome)
+            @Html.DisplayFor(model => model.profNome)
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-lg-10">
+            @Html.LabelFor(model => model.profCurso)
+            @Html.DisplayFor(model => model.profCurso)
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-lg-10">
+            @Html.LabelFor(model => model.profPreco)
+            @Html.DisplayFor(model => model.profPreco)
+        </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+      <input  type="submit" value="Excluir" name="Excluir"/>
+  </div>
+
+
+ }
+

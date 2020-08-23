@@ -49,6 +49,8 @@ namespace Mvc5RazorAutenticacao.Models
             professor.profCodigo++;
             professores.Add(professor);
 
+
+
             /*OrderByDescending(prof => prof.profCodigo) classifica os elementos de uma sequencia em ordem decrescente
              de acordo com uma chave. Nesse caso a chave é o codigo.
 
@@ -58,6 +60,25 @@ namespace Mvc5RazorAutenticacao.Models
              */
         }
 
+        public void EditarProfessor(Professores professor)
+        {
+           
+
+             professores.Where(prof => prof.profCodigo == professor.profCodigo).First().profNome = professor.profNome;
+             professores.Where(prof => prof.profCodigo == professor.profCodigo).First().profCurso = professor.profCurso;
+            professores.Where(prof => prof.profCodigo == professor.profCodigo).First().profPreco = professor.profPreco;
+
+            //professores.Remove(removerProf);
+            //professores.Add(professor);
+            // professores.OrderBy(prof => prof.profCodigo);
+
+        }
+
+        public void ExcluirProfessor(Professores professor)
+        {
+           
+            professores.Remove(professores.Where(prof => prof.profCodigo==professor.profCodigo).First());
+        }
 
         public ProfessoresCrud()
         {
