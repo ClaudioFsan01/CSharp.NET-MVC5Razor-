@@ -8,46 +8,61 @@
 
 @using (Html.BeginForm())
 {
+    @Html.ValidationSummary(false, "Campos Obrigatórios !")
+ <div class="form-horizontal">
+    @*
 
-   <div class="form-horizontal" >   
-        
-       <div class="form-group">
+        @Html.EditorForModel()
 
-           @*@Html.DisplayNameFor(model => model.profCodigo)
-        @Html.EditorFor(model => model.profCodigo)*@
-           @Html.HiddenFor(model => model.profCodigo)  @*  @Html.HiddenFor() retorna um elemento de entrada oculto HTML para cada propriedade no objeto que é
-        representado pela expressão especificada.*@
-       </div>
+         @Html.EditorForModel() Returns HTML markup for the current model, using an editor template. The template is
+            found using the model's ModelMetadata.
+            Retorna um elemento HTML de entrada para cada propriedade no modelo.
+    *@
 
-       <div class="form-group">
-           <div class="col-lg-10">
-               @Html.DisplayNameFor(model => model.profNome)
-               @Html.EditorFor(model => model.profNome)
-           </div>
+    @Html.HiddenFor(model => model.profCodigo) 
+    
+    @*  @Html.HiddenFor() retorna um elemento de entrada oculto HTML para cada propriedade no objeto que é
+            representado pela expressão especificada.
 
-       </div>
-        
-       <div class="form-group">
-           <div class="col-lg-10">
-               @Html.DisplayNameFor(model => model.profCurso)
-               @Html.EditorFor(model => model.profCurso)
-           </div>
+        <div class="form-group">
+
+            @Html.DisplayNameFor(model => model.profCodigo)
+            @Html.EditorFor(model => model.profCodigo)
+
+        </div>
+    *@
 
 
-       </div>
+    <div class="form-group">
+        <div class="col-lg-10">
+            @Html.LabelFor(model => model.profNome, htmlAttributes: new { @class = "control-label-col-md2" })
+            @Html.EditorFor(model => model.profNome, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
 
-       <div class="form-group">
-           <div class="col-lg-10">
-               @Html.DisplayNameFor(model => model.profPreco)
-               @Html.EditorFor(model => model.profPreco)
-           </div>
+    </div>
 
-       </div>
+    <div class="form-group">
+        <div class="col-lg-10">
+            @Html.LabelFor(model => model.profCurso, htmlAttributes: new { @class = "control-label-col-md2" })
+            @Html.EditorFor(model => model.profCurso, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
 
-      <div class="form-group">
-         <input type="submit" name="Salvar" value="Salvar"  />
-      </div>
-     
-   </div>
+
+    </div>
+
+    <div class="form-group">
+        <div class="col-lg-10">
+            @Html.LabelFor(model => model.profPreco, htmlAttributes: new { @class = "control-label-col-md2" })
+            @Html.EditorFor(model => model.profPreco, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+
+    </div>
+
+
+    <div class="form-group">
+        <input type="submit" name="Salvar" value="Salvar" />
+    </div>
+
+ </div>
 }
 

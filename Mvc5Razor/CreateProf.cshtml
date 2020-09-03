@@ -8,44 +8,51 @@
 
 @using (Html.BeginForm())
 {
-    <div class="form-horizontal">
+    
+ <div class="form-horizontal">
+    @*@Html.ValidationSummary(false, "Campos obrigatorios .")*@
+    @Html.ValidationSummary(false, "Campos inválidos !")
 
-        <div class="form-group">
-           
-            <div>
-         @*@html.displaynamefor(model => model.profcodigo)
-         @html.editorfor(model => model.profcodigo)*@
-          </div>
-       
+    <div class="form-group">
 
+        <div>
+            @*
+                @Html.displaynamefor(model => model.profcodigo)
+                @Html.editorfor(model => model.profcodigo)*@
+
+            @Html.HiddenFor(model => model.profCodigo)
         </div>
 
-        <div class="form-group">
-
-            <div>
-                @Html.DisplayNameFor(model => model.profNome)
-                @Html.EditorFor(model => model.profNome)
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div>
-                @Html.DisplayNameFor(model => model.profCurso)
-               @Html.EditorFor(model => model.profCurso)
-           </div>
-        </div>
-
-
-        <div class="form-group">
-            <div>
-                @Html.DisplayNameFor(model => model.profPreco)
-                @Html.EditorFor(model => model.profPreco)
-            </div>
-        </div>
-
-        <button type="submit" name="button"> Gravar </button>
 
     </div>
+
+    <div class="form-group">
+
+        <div>
+            @Html.DisplayNameFor(model => model.profNome)
+            @Html.EditorFor(model => model.profNome)
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div>
+            @Html.DisplayNameFor(model => model.profCurso)
+            @Html.EditorFor(model => model.profCurso)
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div>
+            @Html.DisplayNameFor(model => model.profPreco)
+            @Html.EditorFor(model => model.profPreco)
+        </div>
+    </div>
+
+
+    <button type="submit" name="button"> Gravar </button>
+
+  </div>
 
 
 }

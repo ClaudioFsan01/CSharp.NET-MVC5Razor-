@@ -22,26 +22,48 @@ namespace Mvc5RazorAutenticacao.Controllers
          
         }
 
-        public ActionResult Create()
+        public ActionResult CreateProf()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult Create(Professores professor)
+        public ActionResult CreateProf(Professores professor)
         {
+            if (ModelState.IsValid)
+            {
+                /* ModelStateDictionary.IsValid Propriedade
+                 * Obtém um valor que indica se há erros em qualquer um dos objetos de estado de modelo no dicionário.
+                 * 
+                 * ModelState - Obtém o objeto de dicionário de estado de modelo que contém o estado do modelo e da validação de associação de modelo.
+                   IsValid- 
+                 */
+                profCrud_.InserirProfessor(professor);
+                TempData["mensagem"] = "Professor inserido com sucesso !";
+                return RedirectToAction("ListaProfessores");
+
+            }
+            else
+            {
+                return View();
+            }
+          
+
+            /*
             try
             {
                 //ProfessoresFactory.InstanciarProfessores().InserirProfessor(professor);
+
                 profCrud_.InserirProfessor(professor);
+                TempData["mensagem"] = "Professor inserido com sucesso !";
                 return RedirectToAction("ListaProfessores"); 
             }
             catch
             {
                 return View();
             }
-            
-          
+            */
+
         }
 
 
@@ -73,7 +95,7 @@ namespace Mvc5RazorAutenticacao.Controllers
         }
 
 
-        public ActionResult Edit(int id)
+        public ActionResult EditProf(int id)
         {
             try
             {
@@ -81,8 +103,7 @@ namespace Mvc5RazorAutenticacao.Controllers
                 /*usando a instancia de ProfessoresCrud  profCrud_  para retornar a lista de professores e percorremos essa lista atraves 
                  da clausula where com uso de lambda retornamos o 1° professor cujo o codigo seja igual a id recebida no parametro.
                  FirstOrDefault() retorna o 1° elemento encontrado ou um valor padrão 
-                 */
-                return View(editarProfessor);
+                 */ return View(editarProfessor);
             }
             catch
             {
@@ -91,12 +112,30 @@ namespace Mvc5RazorAutenticacao.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(Professores profEditado)
+        public ActionResult EditProf(Professores profEditado)
         {
+
+            if (ModelState.IsValid)
+            {
+                profCrud_.EditarProfessor(profEditado);
+                TempData["mensagem"] = "Professor editado com sucesso !";
+                return RedirectToAction("ListaProfessores");
+
+            }
+            else
+            {
+                return View();
+            }
+
+
+
+
+            /*
             try
             {
                
                 profCrud_.EditarProfessor(profEditado);
+                TempData["mensagem"] = "Professor editado com sucesso !";
                 return RedirectToAction("ListaProfessores");
 
                 
@@ -107,11 +146,11 @@ namespace Mvc5RazorAutenticacao.Controllers
             catch
             {
                 return View();
-            }
-          
+            }*/
+
         }
 
-        public ActionResult Delete(int id)
+        public ActionResult DeleteProf(int id)
         {
             try
             {
@@ -126,11 +165,12 @@ namespace Mvc5RazorAutenticacao.Controllers
         }
 
         [HttpPost]
-        public ActionResult Delete(Professores professor)
+        public ActionResult DeleteProf(Professores professor)
         {
             try
             {
                 profCrud_.ExcluirProfessor(professor);
+                TempData["mensagem"] = "Professor excluido com sucesso !";
                 return RedirectToAction("ListaProfessores");
 
             }
