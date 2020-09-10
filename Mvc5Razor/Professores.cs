@@ -5,6 +5,7 @@ using System.Web;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 
+
 namespace Mvc5RazorAutenticacao.Models
 {
     /*O namespace System.ComponentModel.DataAnnotations fornece classes de atributos usadas para definir metadados para 
@@ -46,11 +47,25 @@ namespace Mvc5RazorAutenticacao.Models
         [Range(1,1000, ErrorMessage ="Valor minimo R$ 1 e maximo R$ 2000")]
         public float profPreco { get; set; } 
 
+        [DisplayFormat(DataFormatString ="dd/mm/yyyy", NullDisplayText ="Erro favor inserir data de nascimento no formato dd/mm/yyyy")]
+        public String dataNasc { get; set; }
+
         [Range(16,50,ErrorMessage ="Inserir Idade entre 16 e 50 anos !")]
-        [DisplayFormat(DataFormatString ="dd/mm/yyyy")]
         public String idade { get; set; }
+        //[DisplayFormat(DataFormatString ="dd/mm/yyyy")]
 
         [DataType(DataType.Password, ErrorMessage ="Senha Invalida !")]
         public String senha { get; set; }
+
+         [DataType(DataType.Password, ErrorMessage ="Senha Incorreta !")]
+      //  [Compare("senha", )]
+        public String senha1 { get; set; }
+
+        [DataType(DataType.EmailAddress, ErrorMessage = "Não é um endereço de email válido !")]
+        public String email { get; set; }
+
+        [DataType(DataType.Url, ErrorMessage = "Não é uma URL válida !")]
+        //  [Compare("senha", )]
+        public String site1 { get; set; }
     }
 }

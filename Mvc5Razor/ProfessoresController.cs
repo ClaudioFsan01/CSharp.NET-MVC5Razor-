@@ -164,6 +164,7 @@ namespace Mvc5RazorAutenticacao.Controllers
            
         }
 
+        /*
         [HttpPost]
         public ActionResult DeleteProf(Professores professor)
         {
@@ -179,6 +180,23 @@ namespace Mvc5RazorAutenticacao.Controllers
                 return View("Delete");
             }
            
+        }*/
+
+        //[HttpPost, ActionName("DeleteProf")]
+        public ActionResult DeleteProfSim(Professores professor)
+        {
+            try
+            {
+                profCrud_.ExcluirProfessor(professor);
+                TempData["mensagem"] = "Professor excluido com sucesso !";
+                return RedirectToAction("ListaProfessores");
+
+            }
+            catch
+            {
+                return View("Delete");
+            }
+
         }
 
 
